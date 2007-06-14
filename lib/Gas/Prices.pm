@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Carp;
 
-use version; our $VERSION = qv('0.0.3');
+use version; our $VERSION = qv('0.0.4');
 
 # Other recommended modules (uncomment to use):
 #  use IO::Prompt;
@@ -189,7 +189,7 @@ sub is_less
 	
 	return 1 if($first < $second);
 	return 0;
-										}
+}
 										
 1; # Magic true value required at end of module
 __END__
@@ -211,6 +211,8 @@ This document describes Gas::Prices version 0.0.1
 
   
 =head1 DESCRIPTION
+
+Please use module WWW::Fuel::US::Prices instead. This module will no longer be supported.
 
 The module gets gas prices for a given zip code. It gets its data by scraping msn autos webpage.
 
@@ -239,7 +241,7 @@ The usage is as follows
     }
     
     my $cheapest_unleaded = $gp->get_cheapest_station("unleaded");
-    Print the cheapest unleaded grade gas near 75023 is " . $cheapest_unleaded{station_name} . " at " . $cheapest_unleaded->{station_address} . ' for $' . $cheapest_unleaded->{unleaded_price} . "/gallon.";
+    print "The cheapest unleaded grade gas near 75023 is " . $cheapest_unleaded->{station_name} . " at " . $cheapest_unleaded->{station_address} . ' for $' . $cheapest_unleaded->{unleaded_price} . "/gallon.";
 
 
 =head1 INTERFACE 
@@ -264,6 +266,18 @@ The only valid values for the parameter are
 =head2 get_most_expensive_station
 
 Works the same way as get_cheapest_station, but returns the station with the most expensive fuel for the given type.
+
+=head2 get_stations
+
+Gets all gas station info around the zip code
+
+=head2 is_less
+
+Used internally. Need a better way to do this.
+
+=head2 is_greater
+
+Same as is_less
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
